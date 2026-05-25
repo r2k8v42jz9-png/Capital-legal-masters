@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import JusticeScales from "@/components/ui/JusticeScales";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
 function scrollTo(id: string) {
@@ -82,6 +83,15 @@ export default function Hero() {
           transition={{ duration: orb.dur, repeat: Infinity, ease: "easeInOut" }}
         />
       ))}
+
+      {/* Legal motif — faint scales-of-justice watermark behind the title */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+        <JusticeScales
+          animated
+          strokeWidth={1.1}
+          className="legal-motif w-[clamp(300px,40vw,540px)] h-auto -translate-y-[6%]"
+        />
+      </div>
 
       {/* Top accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C41E3A]/28 to-transparent" />

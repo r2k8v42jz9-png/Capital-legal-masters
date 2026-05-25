@@ -66,6 +66,9 @@
   --footer-line:        rgba(255, 255, 255, 0.035);
   --footer-divider:     rgba(255, 255, 255, 0.045);
   --footer-border:      rgba(255, 255, 255, 0.06);
+
+  /* Legal motif (scales of justice) — watermark faintness */
+  --motif-watermark:    rgba(255, 255, 255, 0.045);
 }
 
 [data-theme="light"] {
@@ -127,6 +130,9 @@
   --footer-line:        rgba(0, 0, 0, 0.07);
   --footer-divider:     rgba(0, 0, 0, 0.08);
   --footer-border:      rgba(0, 0, 0, 0.10);
+
+  /* Legal motif (scales of justice) — watermark faintness */
+  --motif-watermark:    rgba(34, 45, 58, 0.06);
 }
 
 /* ══════════════════════════════════════════════════
@@ -293,6 +299,14 @@
 }
 .footer-divider {
   background: linear-gradient(90deg, transparent, var(--footer-divider), transparent);
+}
+
+/* ══════════════════════════════════════════════════
+   LEGAL MOTIF — scales-of-justice watermark
+   ══════════════════════════════════════════════════ */
+.legal-motif {
+  color: var(--motif-watermark);
+  transition: color 0.3s ease;
 }
 
 /* ══════════════════════════════════════════════════

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedSection, { AnimatedStagger, fadeUpItem } from "@/components/ui/AnimatedSection";
+import JusticeScales from "@/components/ui/JusticeScales";
 import { ArrowRight, Gavel, UserCheck, Zap, Lock } from "lucide-react";
 
 const FEATURE_ICONS = [Gavel, UserCheck, Zap, Lock];
@@ -39,6 +40,14 @@ export default function Arbitration() {
         aria-hidden
       >
         SUD
+      </div>
+
+      {/* Legal motif — faint scales watermark on the left, balancing the SUD wordmark */}
+      <div className="absolute left-[-40px] xl:left-[1%] top-1/2 -translate-y-1/2 pointer-events-none hidden lg:block z-0">
+        <JusticeScales
+          strokeWidth={1.4}
+          className="legal-motif w-[clamp(200px,16vw,280px)] h-auto"
+        />
       </div>
 
       {/* Red glow bottom */}
@@ -124,7 +133,11 @@ export default function Arbitration() {
           {/* ── Right: court feature cards ── */}
           <div className="lg:pt-2">
             <AnimatedSection delay={0.08} className="mb-6">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
+                <JusticeScales
+                  strokeWidth={4}
+                  className="w-4 h-4 text-[#C41E3A]/55 flex-shrink-0"
+                />
                 <div className="h-px w-4 bg-[#C41E3A]/40" />
                 <span className="font-sans text-[0.65rem] tracking-[0.22em] uppercase text-[#3D4755] font-600">
                   {t.arbitration.label}

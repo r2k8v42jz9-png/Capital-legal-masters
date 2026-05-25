@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import JusticeScales from "@/components/ui/JusticeScales";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 function scrollTo(id: string) {
@@ -204,9 +205,13 @@ export default function Footer() {
           </AnimatedSection>
         </div>
 
-        {/* Tagline strip */}
+        {/* Tagline strip — with scales emblem */}
         <div className="pb-4 text-center">
           <AnimatedSection>
+            <JusticeScales
+              strokeWidth={3.4}
+              className="w-7 h-7 mx-auto mb-3 text-[#C41E3A]/35"
+            />
             <p className="footer-tagline font-sans text-[0.62rem] tracking-[0.18em] uppercase italic">
               {t.footer.tagline}
             </p>

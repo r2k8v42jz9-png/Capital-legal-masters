@@ -4,6 +4,7 @@ import { useState, FormEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedSection, { AnimatedStagger, fadeUpItem } from "@/components/ui/AnimatedSection";
+import JusticeScales from "@/components/ui/JusticeScales";
 import {
   Phone, Mail, MapPin, Clock,
   CheckCircle2, ArrowRight, Loader2, ExternalLink, AlertCircle,
@@ -125,6 +126,14 @@ export default function Contact() {
         }}
       />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C41E3A]/22 to-transparent" />
+
+      {/* Legal motif — faint scales watermark, upper-right */}
+      <div className="absolute top-[8%] right-[-30px] xl:right-[3%] pointer-events-none hidden lg:block z-0">
+        <JusticeScales
+          strokeWidth={1.4}
+          className="legal-motif w-[clamp(180px,14vw,250px)] h-auto"
+        />
+      </div>
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
 
