@@ -114,10 +114,10 @@ export default function Advantages() {
 
                 {/* Text */}
                 <div>
-                  <h3 className="font-sans text-[0.84rem] font-600 tracking-[0.02em] text-[#B8C8D8] group-hover:text-[#DDE6EE] transition-colors duration-300 mb-2.5 leading-snug">
+                  <h3 className="card-title font-sans text-[0.84rem] font-600 tracking-[0.02em] mb-2.5 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="font-sans text-[0.77rem] text-[#404E60] group-hover:text-[#5A6878] leading-[1.8] transition-colors duration-300">
+                  <p className="card-desc font-sans text-[0.77rem] leading-[1.8]">
                     {item.description}
                   </p>
                 </div>

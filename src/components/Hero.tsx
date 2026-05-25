@@ -37,7 +37,11 @@ const fadeUp = {
 };
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const firmLabel =
+    language === "uz"
+      ? "MCHJ «CAPITAL LEGAL MASTERS»"
+      : "MCHJ «Capital Legal Masters»";
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 90]);
@@ -165,7 +169,7 @@ export default function Hero() {
             className="font-sans text-[0.66rem] tracking-[0.12em] uppercase mt-6"
             style={{ color: "var(--text-ghost)" }}
           >
-            MCHJ «Capital Legal Masters»
+            {firmLabel}
           </motion.p>
         </motion.div>
       </motion.div>

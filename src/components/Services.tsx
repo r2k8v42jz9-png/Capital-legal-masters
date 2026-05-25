@@ -103,10 +103,10 @@ export default function Services() {
 
                 {/* Text */}
                 <div className="flex-1">
-                  <h3 className="font-sans text-[0.84rem] font-600 tracking-[0.03em] text-[#C0CCDA] group-hover:text-[#E0E8F0] transition-colors duration-300 mb-2.5 leading-snug">
+                  <h3 className="card-title font-sans text-[0.84rem] font-600 tracking-[0.03em] mb-2.5 leading-snug">
                     {service.title}
                   </h3>
-                  <p className="font-sans text-[0.78rem] text-[#445060] group-hover:text-[#5E6E80] leading-[1.78] transition-colors duration-300">
+                  <p className="card-desc font-sans text-[0.78rem] leading-[1.78]">
                     {service.description}
                   </p>
                 </div>

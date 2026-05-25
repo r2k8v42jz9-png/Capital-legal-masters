@@ -93,7 +93,7 @@ const uz: Translations = {
     title: "CAPITAL LEGAL MASTERS",
     subtitle: "Biznesingiz uchun ishonchli huquqiy hamkor",
     description:
-      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashda ixtisoslashgan professional yuridik firma.",
+      "MCHJ «CAPITAL LEGAL MASTERS» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashda ixtisoslashgan professional yuridik firma.",
     cta1: "Xizmatlar",
     cta2: "Bog'lanish",
     scrollLabel: "Pastga aylantiring",
@@ -103,7 +103,7 @@ const uz: Translations = {
     label: "Kompaniya haqida",
     title: "Professional yuridik xizmatlar",
     description1:
-      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligiga asoslanib, tadbirkorlik faoliyatini yuridik ta'minlash sohasida ixtisoslashgan professional yuridik firma. Firmamiz yuridik shaxslarni tashkil etishdan tortib korporativ boshqaruvgacha bo'lgan barcha bosqichlarda kompleks huquqiy xizmat ko'rsatadi.",
+      "MCHJ «CAPITAL LEGAL MASTERS» — O'zbekiston Respublikasi qonunchiligiga asoslanib, tadbirkorlik faoliyatini yuridik ta'minlash sohasida ixtisoslashgan professional yuridik firma. Firmamiz yuridik shaxslarni tashkil etishdan tortib korporativ boshqaruvgacha bo'lgan barcha bosqichlarda kompleks huquqiy xizmat ko'rsatadi.",
     description2:
       "Kompaniyamiz huzurida O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan bo'lib, u tijorat nizolarini sudga murojaat etmasdan tez va samarali hal etish imkonini beradi.",
     stats: [
@@ -171,7 +171,7 @@ const uz: Translations = {
     label: "Hakamlik sudi",
     title: "Kompaniyamiz huzuridagi doimiy hakamlik sudi",
     description1:
-      "O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq, MCHJ «Capital Legal Masters» huzurida doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan. Hakamlik sudi tomonlarga tijorat nizolarini davlat sudiga murojaat etmasdan, tez, maxfiy va samarali tarzda hal etish imkonini beradi.",
+      "O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq, MCHJ «CAPITAL LEGAL MASTERS» huzurida doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan. Hakamlik sudi tomonlarga tijorat nizolarini davlat sudiga murojaat etmasdan, tez, maxfiy va samarali tarzda hal etish imkonini beradi.",
     description2:
       "Hakamlik sudining raisi lavozimini Xaydarov J.J. egallaydi. Hakamlik jarayoni maxfiy tarzda olib boriladi, qarorlar O'zbekiston Respublikasi qonunchiligiga muvofiq yuridik kuchga ega bo'lib, ijro etilishi majburiydir.",
     cta: "Murojaat qilish",
@@ -268,8 +268,8 @@ const uz: Translations = {
 
   footer: {
     description:
-      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashga ixtisoslashgan professional yuridik firma. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
-    rights: "© 2025 MCHJ «Capital Legal Masters». Barcha huquqlar himoyalangan.",
+      "MCHJ «CAPITAL LEGAL MASTERS» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashga ixtisoslashgan professional yuridik firma. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
+    rights: "© 2025 MCHJ «CAPITAL LEGAL MASTERS». Barcha huquqlar himoyalangan.",
     sections: [
       {
         heading: "Navigatsiya",

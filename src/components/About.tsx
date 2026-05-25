@@ -5,7 +5,11 @@ import { useLanguage } from "@/context/LanguageContext";
 import AnimatedSection, { AnimatedStagger, fadeUpItem } from "@/components/ui/AnimatedSection";
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const firmLabel =
+    language === "uz"
+      ? "MCHJ «CAPITAL LEGAL MASTERS»"
+      : "MCHJ «Capital Legal Masters»";
 
   return (
     <section
@@ -64,7 +68,7 @@ export default function About() {
               <div className="flex items-center gap-3">
                 <div className="w-6 h-px bg-[#C41E3A]/45" />
                 <span className="font-sans text-[0.68rem] tracking-[0.2em] uppercase text-[#C41E3A]/60 font-600">
-                  MCHJ «Capital Legal Masters»
+                  {firmLabel}
                 </span>
               </div>
             </AnimatedSection>
@@ -86,13 +90,19 @@ export default function About() {
 
                   <div className="flex items-center gap-6 sm:gap-8">
                     <span
-                      className="font-serif text-[2.8rem] sm:text-[3.2rem] font-700 leading-none text-[#D8E0E8] group-hover:text-white transition-colors duration-300"
-                      style={{ fontFamily: "var(--font-playfair), serif" }}
+                      className="font-serif text-[2.8rem] sm:text-[3.2rem] font-700 leading-none transition-colors duration-300"
+                      style={{
+                        fontFamily: "var(--font-playfair), serif",
+                        color: "var(--text-heading)",
+                      }}
                     >
                       {stat.number}
                     </span>
                     <div>
-                      <span className="font-sans text-[0.72rem] sm:text-[0.76rem] font-500 tracking-[0.1em] uppercase text-[#4A5568] group-hover:text-[#7A8899] transition-colors duration-300 leading-snug">
+                      <span
+                        className="font-sans text-[0.72rem] sm:text-[0.76rem] font-500 tracking-[0.1em] uppercase leading-snug transition-colors duration-300"
+                        style={{ color: "var(--text-muted)" }}
+                      >
                         {stat.label}
                       </span>
                       <div className="h-px w-6 bg-[#C41E3A]/25 mt-2.5 group-hover:w-14 group-hover:bg-[#C41E3A]/55 transition-all duration-500" />

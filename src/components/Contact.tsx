@@ -30,7 +30,11 @@ type InfoItem = {
 const EMPTY: FormState = { name: "", email: "", phone: "", subject: "", message: "", _hp: "" };
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const firmLabel =
+    language === "uz"
+      ? "MCHJ «CAPITAL LEGAL MASTERS»"
+      : "MCHJ «Capital Legal Masters»";
   const [form, setForm] = useState<FormState>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -401,7 +405,7 @@ export default function Contact() {
             <AnimatedSection delay={0.42}>
               <div className="glass-card px-4 py-3.5 sm:px-5">
                 <div className="font-sans text-[0.63rem] font-600 tracking-[0.15em] uppercase text-[#2E3A4A] mb-1.5">
-                  MCHJ «Capital Legal Masters»
+                  {firmLabel}
                 </div>
                 <p
                   className="font-sans text-[0.74rem] leading-[1.7]"
@@ -416,27 +420,55 @@ export default function Contact() {
 
         {/* ── Map — exact coordinates: 41.32729140614236, 69.28997506006668 ── */}
         <AnimatedSection delay={0.18} className="mt-8 sm:mt-10">
-          <div className="relative overflow-hidden" style={{ height: 280 }}>
-            <div className="absolute inset-0 border border-white/[0.065] z-10 pointer-events-none" />
+          {/* Outer wrapper: premium border + shadow */}
+          <div
+            className="relative overflow-hidden"
+            style={{
+              height: "clamp(260px, 32vw, 340px)",
+              border: "1px solid var(--border-subtle)",
+              boxShadow: "0 8px 48px rgba(0,0,0,0.28), 0 0 0 1px rgba(196,30,58,0.08)",
+            }}
+          >
+            {/* Gradient edge-fade — top */}
             <div
-              className="absolute top-0 left-0 right-0 h-7 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(180deg, var(--bg-alt) 0%, transparent 100%)" }}
+              className="absolute top-0 left-0 right-0 h-8 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(180deg, var(--bg-alt) 0%, transparent 100%)",
+              }}
+            />
+            {/* Gradient edge-fade — bottom */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-8 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(0deg, var(--bg-alt) 0%, transparent 100%)",
+              }}
+            />
+            {/* Gradient edge-fade — sides */}
+            <div
+              className="absolute top-0 left-0 bottom-0 w-6 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(90deg, var(--bg-alt) 0%, transparent 100%)",
+              }}
             />
             <div
-              className="absolute bottom-0 left-0 right-0 h-7 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(0deg, var(--bg-alt) 0%, transparent 100%)" }}
+              className="absolute top-0 right-0 bottom-0 w-6 z-10 pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(270deg, var(--bg-alt) 0%, transparent 100%)",
+              }}
             />
+            {/* Red accent top bar */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] z-20 bg-gradient-to-r from-transparent via-[#C41E3A]/40 to-transparent pointer-events-none" />
+
             <iframe
-              title="Capital Legal Masters — Toshkent, Yunusobod"
+              title="Capital Legal Masters — Toshkent, Yunusobod tumani"
               src="https://www.openstreetmap.org/export/embed.html?bbox=69.275%2C41.312%2C69.305%2C41.342&layer=mapnik&marker=41.32729%2C69.28998"
               width="100%"
               height="100%"
-              style={{
-                border: "none",
-                filter:
-                  "invert(90%) hue-rotate(180deg) brightness(0.88) contrast(0.82) saturate(0.45)",
-                opacity: 0.8,
-              }}
+              className="map-iframe"
               loading="lazy"
             />
           </div>

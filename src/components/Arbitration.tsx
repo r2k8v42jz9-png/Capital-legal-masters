@@ -15,7 +15,11 @@ function scrollTo(id: string) {
 }
 
 export default function Arbitration() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const firmLabel =
+    language === "uz"
+      ? "MCHJ «CAPITAL LEGAL MASTERS»"
+      : "MCHJ «Capital Legal Masters»";
 
   return (
     <section
@@ -95,7 +99,10 @@ export default function Arbitration() {
                     className="flex-1 glass-card px-4 py-3.5 flex items-center gap-2.5"
                   >
                     <div className="red-dot flex-shrink-0" />
-                    <span className="font-sans text-[0.72rem] font-500 tracking-[0.06em] text-[#8B9AAA] leading-snug">
+                    <span
+                      className="font-sans text-[0.72rem] font-500 tracking-[0.06em] leading-snug"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       {text}
                     </span>
                   </div>
@@ -150,10 +157,10 @@ export default function Arbitration() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="font-sans text-[0.82rem] font-600 text-[#B0C0D0] group-hover:text-[#D8E4EE] transition-colors duration-300 mb-1 leading-snug">
+                      <div className="card-title font-sans text-[0.82rem] font-600 mb-1 leading-snug">
                         {feat.name}
                       </div>
-                      <div className="font-sans text-[0.74rem] text-[#3D4D5E] group-hover:text-[#5A6878] transition-colors duration-300 leading-snug">
+                      <div className="card-desc font-sans text-[0.74rem] leading-snug">
                         {feat.subtitle}
                       </div>
                     </div>
@@ -170,7 +177,7 @@ export default function Arbitration() {
                   className="font-sans text-[0.72rem] leading-snug"
                   style={{ color: "var(--text-dim)" }}
                 >
-                  {t.about.stats[2]?.label} — MCHJ «Capital Legal Masters»
+                  {t.about.stats[2]?.label} — {firmLabel}
                 </p>
               </div>
             </AnimatedSection>

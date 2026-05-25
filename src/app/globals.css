@@ -16,12 +16,12 @@
   --bg-navbar:        rgba(7, 10, 15, 0.92);
   --bg-navbar-mobile: rgba(7, 10, 15, 0.98);
 
-  /* Text */
+  /* Text — tuned for readability on dark surfaces */
   --text-heading:     #E8ECF0;
-  --text-body:        #C8D4DF;
-  --text-muted:       #7A8899;
-  --text-dim:         #4A5568;
-  --text-ghost:       #2E3848;
+  --text-body:        #C0CEDB;   /* card titles, primary content */
+  --text-muted:       #8E9DB0;   /* descriptions, secondary content */
+  --text-dim:         #5A6878;   /* labels, metadata */
+  --text-ghost:       #3A4858;   /* very subtle text */
 
   /* Borders */
   --border-subtle:    rgba(255, 255, 255, 0.072);
@@ -45,7 +45,7 @@
   --scrollbar-thumb:  #1E2433;
   --grid-line:        rgba(255, 255, 255, 0.016);
   --selection-bg:     rgba(196, 30, 58, 0.28);
-  --nav-link:         #6B7A8D;
+  --nav-link:         #7A8B9E;   /* inactive nav links — visible on dark */
   --nav-link-active:  #E8ECF0;
   --nav-link-hover:   #B8C8D8;
 }
@@ -55,16 +55,16 @@
   --bg-page:          #F5F2EC;
   --bg-section:       #F5F2EC;
   --bg-alt:           #EBE6DC;
-  --bg-footer:        #06080D;          /* footer stays dark */
+  --bg-footer:        #06080D;          /* footer always stays dark */
   --bg-navbar:        rgba(245, 242, 236, 0.95);
   --bg-navbar-mobile: rgba(245, 242, 236, 0.99);
 
-  /* Text */
+  /* Text — tuned for readability on warm ivory surfaces */
   --text-heading:     #0F1923;
-  --text-body:        #1E2B3A;
-  --text-muted:       #4A5868;
-  --text-dim:         #7A8090;
-  --text-ghost:       #A0AAB4;
+  --text-body:        #1E2B3A;   /* card titles, primary content */
+  --text-muted:       #374855;   /* descriptions — deep charcoal for contrast */
+  --text-dim:         #546070;   /* labels, metadata */
+  --text-ghost:       #7A8490;   /* very subtle text */
 
   /* Borders */
   --border-subtle:    rgba(0, 0, 0, 0.10);
@@ -88,13 +88,13 @@
   --scrollbar-thumb:  #C0B8AC;
   --grid-line:        rgba(0, 0, 0, 0.028);
   --selection-bg:     rgba(196, 30, 58, 0.18);
-  --nav-link:         #5A6878;
+  --nav-link:         #3D4D5C;   /* inactive nav links — deep on ivory */
   --nav-link-active:  #0F1923;
   --nav-link-hover:   #1A2838;
 }
 
 /* ══════════════════════════════════════════════════
-   BASE
+   BASE — page fill & seamless footer bottom
    ══════════════════════════════════════════════════ */
 @layer base {
   *,
@@ -105,21 +105,25 @@
     padding: 0;
   }
 
+  /* html always has footer-dark bg so the area below the footer
+     never shows a mismatched swatch in either theme            */
   html {
+    background-color: #06080D;
+    min-height: 100%;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    /* Smooth theme transitions */
     transition: background-color 0.3s ease;
   }
 
   body {
     background-color: var(--bg-page);
-    color: var(--text-body);
+    color: var(--text-muted);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     line-height: 1.65;
+    min-height: 100%;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -185,6 +189,25 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #C41E3A;
+}
+
+/* ── Card content text — theme-aware, hover-aware ── */
+.card-title {
+  color: var(--text-body);
+  transition: color 0.3s ease;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.glass-card:hover .card-title {
+  color: var(--text-heading);
+}
+
+.glass-card:hover .card-desc {
+  color: var(--text-body);
 }
 
 /* ══════════════════════════════════════════════════
@@ -398,13 +421,30 @@ textarea.form-input {
   min-height: 120px;
 }
 
-/* Honeypot — hide from humans, visible to bots */
+/* Honeypot — hidden from humans, visible to bots */
 .hp-field {
   position: absolute;
   left: -9999px;
   opacity: 0;
   pointer-events: none;
-  tabindex: -1;
+}
+
+/* ══════════════════════════════════════════════════
+   MAP EMBED — theme-aware filter
+   ══════════════════════════════════════════════════ */
+.map-iframe {
+  border: none;
+  /* Dark theme: invert + hue-rotate for stylized dark map */
+  filter: invert(90%) hue-rotate(180deg) brightness(0.88) contrast(0.82) saturate(0.45);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+  display: block;
+}
+
+[data-theme="light"] .map-iframe {
+  /* Light theme: warm, subtle treatment that looks premium */
+  filter: sepia(12%) saturate(0.82) brightness(1.04) contrast(0.92);
+  opacity: 0.94;
 }
 
 /* ══════════════════════════════════════════════════
