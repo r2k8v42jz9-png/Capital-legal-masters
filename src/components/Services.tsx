@@ -31,9 +31,7 @@ export default function Services() {
     <section
       id="services"
       className="relative section-padding overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, #070A0F 0%, #0C1018 50%, #070A0F 100%)",
-      }}
+      style={{ background: "var(--bg-section)" }}
     >
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.055] to-transparent" />
       <div className="absolute inset-0 grid-bg opacity-55" />
@@ -50,7 +48,7 @@ export default function Services() {
 
           <AnimatedSection delay={0.06}>
             <h2
-              className="heading-display text-[#E8ECF0] mb-4 leading-[1.15]"
+              className="heading-display mb-4 leading-[1.15]"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)" }}
             >
               {t.services.title}
@@ -58,7 +56,10 @@ export default function Services() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <p className="font-sans text-[0.88rem] text-[#5A6878] leading-[1.8]">
+            <p
+              className="font-sans text-[0.88rem] leading-[1.8]"
+              style={{ color: "var(--text-muted)" }}
+            >
               {t.services.subtitle}
             </p>
           </AnimatedSection>

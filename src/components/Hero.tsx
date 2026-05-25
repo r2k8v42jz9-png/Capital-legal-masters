@@ -51,7 +51,7 @@ export default function Hero() {
       style={{ minHeight: "100svh" }}
     >
       {/* ── Background ──────────────────────────────── */}
-      <div className="absolute inset-0 bg-[#070A0F]" />
+      <div className="absolute inset-0" style={{ background: "var(--bg-section)" }} />
       <div className="absolute inset-0 grid-bg" />
       <div
         className="absolute inset-0"
@@ -60,7 +60,7 @@ export default function Hero() {
             "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(196,30,58,0.055) 0%, transparent 65%)",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(7,10,15,0.6)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(7,10,15,0.5)]" />
 
       {/* Animated orbs */}
       {ORB_CONFIG.map((orb, i) => (
@@ -104,7 +104,7 @@ export default function Hero() {
           {/* Firm name */}
           <motion.h1
             variants={fadeUp}
-            className="heading-display text-[#E8ECF0] mb-5 sm:mb-6"
+            className="heading-display mb-5 sm:mb-6"
             style={{ fontSize: "clamp(2.2rem, 6.5vw, 5rem)" }}
           >
             <span>CAPITAL </span>
@@ -124,8 +124,11 @@ export default function Hero() {
           {/* Subtitle */}
           <motion.p
             variants={fadeUp}
-            className="font-serif text-[#A0B0C2] mb-4 sm:mb-5 leading-[1.45] tracking-[0.01em]"
-            style={{ fontSize: "clamp(1.05rem, 2.3vw, 1.45rem)" }}
+            className="font-serif mb-4 sm:mb-5 leading-[1.45] tracking-[0.01em]"
+            style={{
+              fontSize: "clamp(1.05rem, 2.3vw, 1.45rem)",
+              color: "var(--text-body)",
+            }}
           >
             {t.hero.subtitle}
           </motion.p>
@@ -133,7 +136,8 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={fadeUp}
-            className="font-sans text-[0.88rem] sm:text-[0.9rem] text-[#4E5D6E] leading-relaxed max-w-[500px] mx-auto mb-9 sm:mb-10"
+            className="font-sans text-[0.88rem] sm:text-[0.9rem] leading-relaxed max-w-[500px] mx-auto mb-9 sm:mb-10"
+            style={{ color: "var(--text-muted)" }}
           >
             {t.hero.description}
           </motion.p>
@@ -158,9 +162,10 @@ export default function Hero() {
           {/* Legal form note */}
           <motion.p
             variants={fadeUp}
-            className="font-sans text-[0.66rem] tracking-[0.12em] uppercase text-[#2A3340] mt-6"
+            className="font-sans text-[0.66rem] tracking-[0.12em] uppercase mt-6"
+            style={{ color: "var(--text-ghost)" }}
           >
-            OOO «Capital Legal Masters»
+            MCHJ «Capital Legal Masters»
           </motion.p>
         </motion.div>
       </motion.div>

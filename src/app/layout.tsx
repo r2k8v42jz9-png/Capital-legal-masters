@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -19,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Capital Legal Masters — Yuridik firma | O'zbekiston",
   description:
-    "OOO «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini yuridik ta'minlash, korporativ huquq va hakamlik sudida ixtisoslashgan professional yuridik firma. ООО «Capital Legal Masters» — юридическая фирма в Узбекистане.",
+    "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini yuridik ta'minlash, korporativ huquq va hakamlik sudida ixtisoslashgan professional yuridik firma. MCHJ «Capital Legal Masters» — юридическая фирма в Узбекистане.",
   keywords: [
     "yuridik firma Toshkent",
     "Capital Legal Masters",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     "korporativ huquq",
     "tadbirkorlik huquqi",
     "юридическая фирма Узбекистан",
-    "арбитражный суд Узбекистан",
+    "третейский суд Узбекистан",
     "корпоративное право",
   ],
   openGraph: {
@@ -39,6 +40,64 @@ export const metadata: Metadata = {
   },
 };
 
+// Anti-FOUC: runs before React hydration to set correct theme
+const antiFlicker = `
+(function(){
+  try {
+    var s = localStorage.getItem('clm-theme');
+    var p = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', s || p);
+  } catch(e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+`.trim();
+
+// Schema.org JSON-LD structured data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Capital Legal Masters",
+  "legalName": "MCHJ «Capital Legal Masters»",
+  "url": "https://capitallegal.uz",
+  "telephone": "+998900150781",
+  "email": "tomure1974@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Bodomzor yo'li ko'chasi, 1a",
+    "addressLocality": "Toshkent",
+    "addressRegion": "Toshkent shahri",
+    "addressCountry": "UZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.32729140614236,
+    "longitude": 69.28997506006668
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Uzbekistan"
+  },
+  "serviceType": [
+    "Corporate Law",
+    "Business Registration",
+    "Arbitration",
+    "Legal Consulting",
+    "Contract Law"
+  ],
+  "description": "MCHJ «Capital Legal Masters» — professional yuridik firma. Kompaniyamiz huzurida O'zR «Hakamlik sudlari to'g'risida»gi Qonun asosida doimiy hakamlik sudi faoliyat yuritadi.",
+  "knowsLanguage": ["uz", "ru"],
+  "hasMap": "https://www.openstreetmap.org/?mlat=41.32729&mlon=69.28998"
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -46,9 +105,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uz" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        {/* Anti-FOUC theme script — runs synchronously before render */}
+        <script dangerouslySetInnerHTML={{ __html: antiFlicker }} />
+        {/* Schema.org structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         <div className="noise-layer" aria-hidden="true" />
-        <LanguageProvider>{children}</LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>{children}</LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

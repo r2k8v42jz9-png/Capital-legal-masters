@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedSection, { AnimatedStagger, fadeUpItem } from "@/components/ui/AnimatedSection";
 import {
   Phone, Mail, MapPin, Clock,
-  CheckCircle2, ArrowRight, Loader2, ExternalLink,
+  CheckCircle2, ArrowRight, Loader2, ExternalLink, AlertCircle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -16,6 +16,7 @@ type FormState = {
   phone: string;
   subject: string;
   message: string;
+  _hp: string; // honeypot
 };
 
 type InfoItem = {
@@ -26,26 +27,54 @@ type InfoItem = {
   multiline?: boolean;
 };
 
-const EMPTY: FormState = { name: "", email: "", phone: "", subject: "", message: "" };
+const EMPTY: FormState = { name: "", email: "", phone: "", subject: "", message: "", _hp: "" };
 
 export default function Contact() {
   const { t } = useLanguage();
   const [form, setForm] = useState<FormState>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const set = (k: keyof FormState) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
       setForm((p) => ({ ...p, [k]: e.target.value }));
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
+
+    // Honeypot check — bots fill it, humans don't
+    if (form._hp) return;
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Server error");
+      }
+
       setSubmitted(true);
       setForm(EMPTY);
-    }, 1100);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      setError(msg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Derive tel: href — strip spaces and dashes from display number
@@ -82,7 +111,7 @@ export default function Contact() {
     <section
       id="contact"
       className="relative section-padding overflow-hidden"
-      style={{ background: "#0A0D13" }}
+      style={{ background: "var(--bg-alt)" }}
     >
       {/* Top glow */}
       <div
@@ -106,14 +135,19 @@ export default function Contact() {
           </AnimatedSection>
           <AnimatedSection delay={0.06}>
             <h2
-              className="heading-display text-[#E8ECF0] mb-3 leading-[1.15]"
+              className="heading-display mb-3 leading-[1.15]"
               style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)" }}
             >
               {t.contact.title}
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <p className="font-sans text-[0.88rem] text-[#5A6878]">{t.contact.subtitle}</p>
+            <p
+              className="font-sans text-[0.88rem]"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {t.contact.subtitle}
+            </p>
           </AnimatedSection>
         </div>
 
@@ -142,12 +176,18 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3
-                        className="font-serif text-[1.15rem] text-[#E8ECF0] mb-2.5"
-                        style={{ fontFamily: "var(--font-playfair), serif" }}
+                        className="font-serif text-[1.15rem] mb-2.5"
+                        style={{
+                          fontFamily: "var(--font-playfair), serif",
+                          color: "var(--text-heading)",
+                        }}
                       >
                         {t.contact.form.success}
                       </h3>
-                      <p className="font-sans text-[0.82rem] text-[#7A8899] leading-[1.8] max-w-[340px]">
+                      <p
+                        className="font-sans text-[0.82rem] leading-[1.8] max-w-[340px]"
+                        style={{ color: "var(--text-muted)" }}
+                      >
                         {t.contact.form.successSub}
                       </p>
                     </div>
@@ -161,6 +201,7 @@ export default function Contact() {
                 ) : (
                   <motion.form
                     key="form"
+                    ref={formRef}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -169,6 +210,18 @@ export default function Contact() {
                     className="space-y-4"
                     noValidate
                   >
+                    {/* Honeypot field — hidden from humans */}
+                    <div className="hp-field" aria-hidden="true">
+                      <input
+                        type="text"
+                        name="_hp"
+                        value={form._hp}
+                        onChange={set("_hp")}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label className="form-label">{t.contact.form.name}</label>
@@ -231,6 +284,24 @@ export default function Contact() {
                         onChange={set("message")}
                       />
                     </div>
+
+                    {/* Error state */}
+                    <AnimatePresence>
+                      {error && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.25 }}
+                          className="flex items-center gap-2.5 px-4 py-3 border border-[#C41E3A]/30 bg-[#C41E3A]/05"
+                        >
+                          <AlertCircle size={14} className="text-[#C41E3A] flex-shrink-0" />
+                          <p className="font-sans text-[0.76rem] text-[#C41E3A]/80">
+                            {error}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
 
                     <button
                       type="submit"
@@ -330,9 +401,12 @@ export default function Contact() {
             <AnimatedSection delay={0.42}>
               <div className="glass-card px-4 py-3.5 sm:px-5">
                 <div className="font-sans text-[0.63rem] font-600 tracking-[0.15em] uppercase text-[#2E3A4A] mb-1.5">
-                  OOO «Capital Legal Masters»
+                  MCHJ «Capital Legal Masters»
                 </div>
-                <p className="font-sans text-[0.74rem] text-[#3A4858] leading-[1.7]">
+                <p
+                  className="font-sans text-[0.74rem] leading-[1.7]"
+                  style={{ color: "var(--text-dim)" }}
+                >
                   {t.about.stats[2]?.label}
                 </p>
               </div>
@@ -340,21 +414,21 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* ── Map ── */}
+        {/* ── Map — exact coordinates: 41.32729140614236, 69.28997506006668 ── */}
         <AnimatedSection delay={0.18} className="mt-8 sm:mt-10">
           <div className="relative overflow-hidden" style={{ height: 280 }}>
             <div className="absolute inset-0 border border-white/[0.065] z-10 pointer-events-none" />
             <div
               className="absolute top-0 left-0 right-0 h-7 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(180deg, #0A0D13 0%, transparent 100%)" }}
+              style={{ background: "linear-gradient(180deg, var(--bg-alt) 0%, transparent 100%)" }}
             />
             <div
               className="absolute bottom-0 left-0 right-0 h-7 z-10 pointer-events-none"
-              style={{ background: "linear-gradient(0deg, #0A0D13 0%, transparent 100%)" }}
+              style={{ background: "linear-gradient(0deg, var(--bg-alt) 0%, transparent 100%)" }}
             />
             <iframe
               title="Capital Legal Masters — Toshkent, Yunusobod"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=69.219%2C41.289%2C69.261%2C41.311&layer=mapnik&marker=41.2995%2C69.240"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=69.275%2C41.312%2C69.305%2C41.342&layer=mapnik&marker=41.32729%2C69.28998"
               width="100%"
               height="100%"
               style={{

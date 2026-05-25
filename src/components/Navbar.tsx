@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Menu, X } from "lucide-react";
 
 function scrollTo(id: string) {
@@ -64,10 +65,16 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.75, delay: 1.95, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? "bg-[rgba(7,10,15,0.92)] backdrop-blur-2xl border-b border-white/[0.055] shadow-[0_4px_32px_rgba(0,0,0,0.45)]"
-            : "bg-transparent"
+          scrolled ? "backdrop-blur-2xl shadow-[0_4px_32px_rgba(0,0,0,0.45)]" : ""
         }`}
+        style={
+          scrolled
+            ? {
+                background: "var(--bg-navbar)",
+                borderBottom: "1px solid var(--border-faint)",
+              }
+            : { background: "transparent" }
+        }
       >
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-10">
           <div className="flex items-center justify-between h-[74px]">
@@ -104,11 +111,13 @@ export default function Navbar() {
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`relative px-3.5 py-2 font-sans text-[0.7rem] font-500 tracking-[0.08em] uppercase transition-colors duration-250 ${
-                    activeSection === link.id
-                      ? "text-[#E8ECF0]"
-                      : "text-[#6B7A8D] hover:text-[#B8C8D8]"
-                  }`}
+                  className="relative px-3.5 py-2 font-sans text-[0.7rem] font-500 tracking-[0.08em] uppercase transition-colors duration-250"
+                  style={{
+                    color:
+                      activeSection === link.id
+                        ? "var(--nav-link-active)"
+                        : "var(--nav-link)",
+                  }}
                 >
                   {link.label}
                   {activeSection === link.id && (
@@ -123,11 +132,15 @@ export default function Navbar() {
             </nav>
 
             {/* ── Right side ── */}
-            <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-2.5">
+
+              {/* Theme toggle */}
+              <ThemeToggle />
 
               {/* Language switcher */}
               <div
-                className="flex items-center border border-white/[0.08]"
+                className="flex items-center"
+                style={{ border: "1px solid var(--border-subtle)" }}
                 role="group"
                 aria-label="Language selector"
               >
@@ -157,7 +170,11 @@ export default function Navbar() {
               {/* Mobile menu toggle */}
               <button
                 onClick={() => setOpen((p) => !p)}
-                className="lg:hidden w-9 h-9 flex items-center justify-center border border-white/[0.08] text-[#8B96A7] hover:text-[#E8ECF0] hover:border-white/20 transition-colors"
+                className="lg:hidden w-9 h-9 flex items-center justify-center transition-colors"
+                style={{
+                  border: "1px solid var(--border-subtle)",
+                  color: "var(--text-muted)",
+                }}
                 aria-label="Toggle menu"
                 aria-expanded={open}
               >
@@ -176,7 +193,11 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[74px] left-0 right-0 z-40 bg-[rgba(7,10,15,0.98)] backdrop-blur-2xl border-b border-white/[0.055] lg:hidden"
+            className="fixed top-[74px] left-0 right-0 z-40 backdrop-blur-2xl lg:hidden"
+            style={{
+              background: "var(--bg-navbar-mobile)",
+              borderBottom: "1px solid var(--border-faint)",
+            }}
           >
             <div className="max-w-[1280px] mx-auto px-5 sm:px-8 py-4">
               <nav className="flex flex-col">
@@ -190,11 +211,14 @@ export default function Navbar() {
                       scrollTo(link.id);
                       setOpen(false);
                     }}
-                    className={`text-left px-2 py-3.5 font-sans text-[0.78rem] font-500 tracking-[0.1em] uppercase border-b border-white/[0.04] last:border-0 transition-colors duration-200 ${
-                      activeSection === link.id
-                        ? "text-[#E8ECF0]"
-                        : "text-[#6B7A8D] hover:text-[#C8D8E8]"
-                    }`}
+                    className="text-left px-2 py-3.5 font-sans text-[0.78rem] font-500 tracking-[0.1em] uppercase border-b last:border-0 transition-colors duration-200"
+                    style={{
+                      borderColor: "var(--border-faint)",
+                      color:
+                        activeSection === link.id
+                          ? "var(--nav-link-active)"
+                          : "var(--nav-link)",
+                    }}
                   >
                     <span className="flex items-center gap-3">
                       {activeSection === link.id && (

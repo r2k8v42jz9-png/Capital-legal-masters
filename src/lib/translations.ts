@@ -93,7 +93,7 @@ const uz: Translations = {
     title: "CAPITAL LEGAL MASTERS",
     subtitle: "Biznesingiz uchun ishonchli huquqiy hamkor",
     description:
-      "OOO «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashda ixtisoslashgan professional yuridik firma.",
+      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashda ixtisoslashgan professional yuridik firma.",
     cta1: "Xizmatlar",
     cta2: "Bog'lanish",
     scrollLabel: "Pastga aylantiring",
@@ -103,7 +103,7 @@ const uz: Translations = {
     label: "Kompaniya haqida",
     title: "Professional yuridik xizmatlar",
     description1:
-      "OOO «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligiga asoslanib, tadbirkorlik faoliyatini yuridik ta'minlash sohasida ixtisoslashgan professional yuridik firma. Firmamiz yuridik shaxslarni tashkil etishdan tortib korporativ boshqaruvgacha bo'lgan barcha bosqichlarda kompleks huquqiy xizmat ko'rsatadi.",
+      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligiga asoslanib, tadbirkorlik faoliyatini yuridik ta'minlash sohasida ixtisoslashgan professional yuridik firma. Firmamiz yuridik shaxslarni tashkil etishdan tortib korporativ boshqaruvgacha bo'lgan barcha bosqichlarda kompleks huquqiy xizmat ko'rsatadi.",
     description2:
       "Kompaniyamiz huzurida O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan bo'lib, u tijorat nizolarini sudga murojaat etmasdan tez va samarali hal etish imkonini beradi.",
     stats: [
@@ -171,7 +171,7 @@ const uz: Translations = {
     label: "Hakamlik sudi",
     title: "Kompaniyamiz huzuridagi doimiy hakamlik sudi",
     description1:
-      "O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq, OOO «Capital Legal Masters» huzurida doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan. Hakamlik sudi tomonlarga tijorat nizolarini davlat sudiga murojaat etmasdan, tez, maxfiy va samarali tarzda hal etish imkonini beradi.",
+      "O'zbekiston Respublikasining «Hakamlik sudlari to'g'risida»gi Qonunga muvofiq, MCHJ «Capital Legal Masters» huzurida doimiy faoliyat yurituvchi hakamlik sudi tashkil etilgan. Hakamlik sudi tomonlarga tijorat nizolarini davlat sudiga murojaat etmasdan, tez, maxfiy va samarali tarzda hal etish imkonini beradi.",
     description2:
       "Hakamlik sudining raisi lavozimini Xaydarov J.J. egallaydi. Hakamlik jarayoni maxfiy tarzda olib boriladi, qarorlar O'zbekiston Respublikasi qonunchiligiga muvofiq yuridik kuchga ega bo'lib, ijro etilishi majburiydir.",
     cta: "Murojaat qilish",
@@ -268,8 +268,8 @@ const uz: Translations = {
 
   footer: {
     description:
-      "OOO «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashga ixtisoslashgan professional yuridik firma. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
-    rights: "© 2024 OOO «Capital Legal Masters». Barcha huquqlar himoyalangan.",
+      "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini kompleks yuridik ta'minlashga ixtisoslashgan professional yuridik firma. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
+    rights: "© 2025 MCHJ «Capital Legal Masters». Barcha huquqlar himoyalangan.",
     sections: [
       {
         heading: "Navigatsiya",
@@ -310,7 +310,7 @@ const ru: Translations = {
     title: "CAPITAL LEGAL MASTERS",
     subtitle: "Надёжный правовой партнёр для вашего бизнеса",
     description:
-      "ООО «Capital Legal Masters» — профессиональная юридическая фирма, специализирующаяся на комплексном юридическом сопровождении предпринимательской деятельности в соответствии с законодательством Республики Узбекистан.",
+      "MCHJ «Capital Legal Masters» — профессиональная юридическая фирма, специализирующаяся на комплексном юридическом сопровождении предпринимательской деятельности в соответствии с законодательством Республики Узбекистан.",
     cta1: "Услуги",
     cta2: "Связаться",
     scrollLabel: "Прокрутить вниз",
@@ -320,7 +320,7 @@ const ru: Translations = {
     label: "О компании",
     title: "Профессиональные юридические услуги",
     description1:
-      "ООО «Capital Legal Masters» — профессиональная юридическая фирма, осуществляющая деятельность в соответствии с законодательством Республики Узбекистан. Фирма специализируется на комплексном юридическом сопровождении предпринимательской деятельности на всех её этапах — от регистрации юридических лиц до корпоративного управления.",
+      "MCHJ «Capital Legal Masters» — профессиональная юридическая фирма, осуществляющая деятельность в соответствии с законодательством Республики Узбекистан. Фирма специализируется на комплексном юридическом сопровождении предпринимательской деятельности на всех её этапах — от регистрации юридических лиц до корпоративного управления.",
     description2:
       "При компании в соответствии с Законом Республики Узбекистан «О третейских судах» учреждён постоянно действующий третейский суд, предоставляющий сторонам возможность разрешать коммерческие споры быстро и конфиденциально, без обращения в государственные суды.",
     stats: [
@@ -388,7 +388,7 @@ const ru: Translations = {
     label: "Третейский суд",
     title: "Постоянно действующий третейский суд при нашей компании",
     description1:
-      "В соответствии с Законом Республики Узбекистан «О третейских судах» при ООО «Capital Legal Masters» учреждён постоянно действующий третейский суд. Третейский суд предоставляет сторонам возможность разрешать коммерческие споры без обращения в государственные суды — быстро, конфиденциально и эффективно.",
+      "В соответствии с Законом Республики Узбекистан «О третейских судах» при MCHJ «Capital Legal Masters» учреждён постоянно действующий третейский суд. Третейский суд предоставляет сторонам возможность разрешать коммерческие споры без обращения в государственные суды — быстро, конфиденциально и эффективно.",
     description2:
       "Председателем третейского суда является Хайдаров Дж.Дж. Третейское разбирательство осуществляется в конфиденциальном порядке; решения суда имеют юридическую силу в соответствии с законодательством Республики Узбекистан и подлежат обязательному исполнению.",
     cta: "Обратиться",
@@ -485,8 +485,8 @@ const ru: Translations = {
 
   footer: {
     description:
-      "ООО «Capital Legal Masters» — профессиональная юридическая фирма, специализирующаяся на комплексном юридическом сопровождении предпринимательской деятельности в соответствии с законодательством Республики Узбекистан. При компании действует постоянно действующий третейский суд.",
-    rights: "© 2024 ООО «Capital Legal Masters». Все права защищены.",
+      "MCHJ «Capital Legal Masters» — профессиональная юридическая фирма, специализирующаяся на комплексном юридическом сопровождении предпринимательской деятельности в соответствии с законодательством Республики Узбекистан. При компании действует постоянно действующий третейский суд.",
+    rights: "© 2025 MCHJ «Capital Legal Masters». Все права защищены.",
     sections: [
       {
         heading: "Навигация",

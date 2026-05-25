@@ -27,7 +27,7 @@ export default function Footer() {
   const mailHref = `mailto:${t.contact.info.email.value}`;
 
   return (
-    <footer className="relative overflow-hidden" style={{ background: "#06080D" }}>
+    <footer className="relative overflow-hidden" style={{ background: "var(--bg-footer)" }}>
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">
         <div className="h-px bg-gradient-to-r from-transparent via-[#C41E3A]/28 to-transparent" />
@@ -81,7 +81,7 @@ export default function Footer() {
             <div className="inline-flex items-center gap-2 border border-white/[0.055] px-3 py-2">
               <div className="red-dot" />
               <span className="font-sans text-[0.62rem] font-600 tracking-[0.1em] uppercase text-[#2A3340]">
-                OOO
+                MCHJ
               </span>
             </div>
           </AnimatedSection>

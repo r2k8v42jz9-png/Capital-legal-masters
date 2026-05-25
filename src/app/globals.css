@@ -2,6 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ══════════════════════════════════════════════════
+   THEME VARIABLES
+   :root  = dark mode (default)
+   [data-theme="light"] = light overrides
+   ══════════════════════════════════════════════════ */
+:root {
+  /* Backgrounds */
+  --bg-page:          #070A0F;
+  --bg-section:       #070A0F;
+  --bg-alt:           #0A0D13;
+  --bg-footer:        #06080D;
+  --bg-navbar:        rgba(7, 10, 15, 0.92);
+  --bg-navbar-mobile: rgba(7, 10, 15, 0.98);
+
+  /* Text */
+  --text-heading:     #E8ECF0;
+  --text-body:        #C8D4DF;
+  --text-muted:       #7A8899;
+  --text-dim:         #4A5568;
+  --text-ghost:       #2E3848;
+
+  /* Borders */
+  --border-subtle:    rgba(255, 255, 255, 0.072);
+  --border-faint:     rgba(255, 255, 255, 0.04);
+
+  /* Cards */
+  --card-bg:          linear-gradient(145deg, rgba(255,255,255,0.038) 0%, rgba(255,255,255,0.016) 100%);
+  --card-bg-hover:    linear-gradient(145deg, rgba(255,255,255,0.055) 0%, rgba(196,30,58,0.04) 100%);
+  --card-border:      rgba(255, 255, 255, 0.072);
+  --card-border-hover:rgba(196, 30, 58, 0.22);
+  --card-shadow-hover:0 8px 40px rgba(0,0,0,0.35), 0 0 20px rgba(196,30,58,0.05);
+
+  /* Form inputs */
+  --input-bg:         rgba(255, 255, 255, 0.03);
+  --input-border:     rgba(255, 255, 255, 0.09);
+  --input-text:       #D8E2EC;
+  --input-placeholder:#2E3848;
+
+  /* Misc */
+  --scrollbar-track:  #070A0F;
+  --scrollbar-thumb:  #1E2433;
+  --grid-line:        rgba(255, 255, 255, 0.016);
+  --selection-bg:     rgba(196, 30, 58, 0.28);
+  --nav-link:         #6B7A8D;
+  --nav-link-active:  #E8ECF0;
+  --nav-link-hover:   #B8C8D8;
+}
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-page:          #F5F2EC;
+  --bg-section:       #F5F2EC;
+  --bg-alt:           #EBE6DC;
+  --bg-footer:        #06080D;          /* footer stays dark */
+  --bg-navbar:        rgba(245, 242, 236, 0.95);
+  --bg-navbar-mobile: rgba(245, 242, 236, 0.99);
+
+  /* Text */
+  --text-heading:     #0F1923;
+  --text-body:        #1E2B3A;
+  --text-muted:       #4A5868;
+  --text-dim:         #7A8090;
+  --text-ghost:       #A0AAB4;
+
+  /* Borders */
+  --border-subtle:    rgba(0, 0, 0, 0.10);
+  --border-faint:     rgba(0, 0, 0, 0.055);
+
+  /* Cards */
+  --card-bg:          linear-gradient(145deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%);
+  --card-bg-hover:    linear-gradient(145deg, rgba(255,255,255,0.97) 0%, rgba(196,30,58,0.04) 100%);
+  --card-border:      rgba(0, 0, 0, 0.09);
+  --card-border-hover:rgba(196, 30, 58, 0.28);
+  --card-shadow-hover:0 8px 40px rgba(0,0,0,0.12), 0 0 20px rgba(196,30,58,0.06);
+
+  /* Form inputs */
+  --input-bg:         rgba(255, 255, 255, 0.88);
+  --input-border:     rgba(0, 0, 0, 0.12);
+  --input-text:       #0F1923;
+  --input-placeholder:#8A94A0;
+
+  /* Misc */
+  --scrollbar-track:  #F5F2EC;
+  --scrollbar-thumb:  #C0B8AC;
+  --grid-line:        rgba(0, 0, 0, 0.028);
+  --selection-bg:     rgba(196, 30, 58, 0.18);
+  --nav-link:         #5A6878;
+  --nav-link-active:  #0F1923;
+  --nav-link-hover:   #1A2838;
+}
+
+/* ══════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════ */
 @layer base {
   *,
   *::before,
@@ -14,21 +108,28 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Smooth theme transitions */
+    transition: background-color 0.3s ease;
   }
 
   body {
-    background-color: #070A0F;
-    color: #E8ECF0;
+    background-color: var(--bg-page);
+    color: var(--text-body);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     line-height: 1.65;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
-    background-color: rgba(196, 30, 58, 0.28);
+    background-color: var(--selection-bg);
     color: #E8ECF0;
+  }
+
+  [data-theme="light"] ::selection {
+    color: #0F1923;
   }
 
   ::-webkit-scrollbar {
@@ -36,11 +137,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #070A0F;
+    background: var(--scrollbar-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1E2433;
+    background: var(--scrollbar-thumb);
     border-radius: 2px;
   }
 
@@ -49,7 +150,9 @@
   }
 }
 
-/* ── Noise overlay ──────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   NOISE OVERLAY
+   ══════════════════════════════════════════════════ */
 .noise-layer {
   position: fixed;
   inset: 0;
@@ -63,12 +166,16 @@
   background-size: 256px 256px;
 }
 
-/* ── Typography ─────────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   TYPOGRAPHY
+   ══════════════════════════════════════════════════ */
 .heading-display {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.12;
+  color: var(--text-heading);
+  transition: color 0.3s ease;
 }
 
 .label-tag {
@@ -80,7 +187,9 @@
   color: #C41E3A;
 }
 
-/* ── Section spacing ────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   SECTION SPACING
+   ══════════════════════════════════════════════════ */
 .section-padding {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -100,7 +209,9 @@
   }
 }
 
-/* ── Decorative elements ────────────────────────── */
+/* ══════════════════════════════════════════════════
+   DECORATIVE ELEMENTS
+   ══════════════════════════════════════════════════ */
 .divider-line {
   display: inline-block;
   width: 40px;
@@ -120,36 +231,37 @@
   flex-shrink: 0;
 }
 
-/* ── Grid background pattern ────────────────────── */
+/* ══════════════════════════════════════════════════
+   GRID BACKGROUND
+   ══════════════════════════════════════════════════ */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
-/* ── Glass card ─────────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   GLASS CARD
+   ══════════════════════════════════════════════════ */
 .glass-card {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.038) 0%,
-    rgba(255, 255, 255, 0.016) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.072);
-  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .glass-card:hover {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.055) 0%,
-    rgba(196, 30, 58, 0.04) 100%
-  );
-  border-color: rgba(196, 30, 58, 0.22);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35), 0 0 20px rgba(196, 30, 58, 0.05);
+  background: var(--card-bg-hover);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--card-shadow-hover);
 }
 
-/* ── Buttons ────────────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════════ */
 .btn-primary {
   position: relative;
   display: inline-flex;
@@ -206,13 +318,13 @@
   gap: 8px;
   padding: 13px 30px;
   background: transparent;
-  color: #9BAAB8;
+  color: var(--text-muted);
   font-family: var(--font-inter), sans-serif;
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   white-space: nowrap;
@@ -220,12 +332,14 @@
 
 .btn-outline:hover {
   border-color: rgba(196, 30, 58, 0.45);
-  color: #D8E0E8;
+  color: var(--text-heading);
   background: rgba(196, 30, 58, 0.06);
   transform: translateY(-1px);
 }
 
-/* ── Form fields ────────────────────────────────── */
+/* ══════════════════════════════════════════════════
+   FORM FIELDS
+   ══════════════════════════════════════════════════ */
 .form-label {
   display: block;
   font-family: var(--font-inter), sans-serif;
@@ -233,44 +347,49 @@
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #4A5568;
+  color: var(--text-dim);
   margin-bottom: 7px;
+  transition: color 0.3s ease;
 }
 
 .form-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  color: #D8E2EC;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
   padding: 13px 16px;
   font-family: var(--font-inter), sans-serif;
   font-size: 0.88rem;
   line-height: 1.5;
-  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
   outline: none;
   -webkit-appearance: none;
   border-radius: 0;
 }
 
 .form-input::placeholder {
-  color: #2E3848;
+  color: var(--input-placeholder);
   font-size: 0.82rem;
 }
 
 .form-input:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-subtle);
+  background: var(--input-bg);
 }
 
 .form-input:focus {
   border-color: rgba(196, 30, 58, 0.5);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--input-bg);
   box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.08), 0 1px 0 rgba(196, 30, 58, 0.15) inset;
-  color: #E8ECF0;
+  color: var(--text-heading);
 }
 
 .form-input:focus::placeholder {
-  color: #3D4755;
+  color: var(--text-ghost);
 }
 
 /* Textarea specific */
@@ -279,7 +398,18 @@ textarea.form-input {
   min-height: 120px;
 }
 
-/* ── Mobile nav improvements ────────────────────── */
+/* Honeypot — hide from humans, visible to bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+  tabindex: -1;
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE TWEAKS
+   ══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .btn-primary,
   .btn-outline {

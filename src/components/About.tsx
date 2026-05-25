@@ -8,7 +8,11 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="relative section-padding overflow-hidden bg-[#070A0F]">
+    <section
+      id="about"
+      className="relative section-padding overflow-hidden"
+      style={{ background: "var(--bg-section)" }}
+    >
       {/* Subtle accent */}
       <div
         className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none opacity-60"
@@ -31,7 +35,7 @@ export default function About() {
           <div>
             <AnimatedSection delay={0.06}>
               <h2
-                className="heading-display text-[#E8ECF0] mb-7 leading-[1.15]"
+                className="heading-display mb-7 leading-[1.15]"
                 style={{ fontSize: "clamp(1.75rem, 3.2vw, 2.75rem)" }}
               >
                 {t.about.title}
@@ -39,13 +43,19 @@ export default function About() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.12}>
-              <p className="font-sans text-[0.92rem] text-[#7A8899] leading-[1.85] mb-5">
+              <p
+                className="font-sans text-[0.92rem] leading-[1.85] mb-5"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {t.about.description1}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={0.17}>
-              <p className="font-sans text-[0.92rem] text-[#7A8899] leading-[1.85] mb-9">
+              <p
+                className="font-sans text-[0.92rem] leading-[1.85] mb-9"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {t.about.description2}
               </p>
             </AnimatedSection>
@@ -54,7 +64,7 @@ export default function About() {
               <div className="flex items-center gap-3">
                 <div className="w-6 h-px bg-[#C41E3A]/45" />
                 <span className="font-sans text-[0.68rem] tracking-[0.2em] uppercase text-[#C41E3A]/60 font-600">
-                  OOO «Capital Legal Masters»
+                  MCHJ «Capital Legal Masters»
                 </span>
               </div>
             </AnimatedSection>
@@ -67,7 +77,7 @@ export default function About() {
                 <motion.div
                   key={i}
                   variants={fadeUpItem}
-                  className="group relative glass-card p-7 sm:p-9 overflow-hidden cursor-default"
+                  className="group relative glass-card p-7 sm:p-9 overflow-hidden cursor-default transition-colors duration-300"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.28 }}
                 >

@@ -21,7 +21,7 @@ export default function Arbitration() {
     <section
       id="arbitration"
       className="relative section-padding overflow-hidden"
-      style={{ background: "#0A0D13" }}
+      style={{ background: "var(--bg-alt)" }}
     >
       {/* Decorative large bg text */}
       <div
@@ -61,7 +61,7 @@ export default function Arbitration() {
 
             <AnimatedSection delay={0.06}>
               <h2
-                className="heading-display text-[#E8ECF0] mb-6 leading-[1.15]"
+                className="heading-display mb-6 leading-[1.15]"
                 style={{ fontSize: "clamp(1.65rem, 3vw, 2.6rem)" }}
               >
                 {t.arbitration.title}
@@ -69,13 +69,19 @@ export default function Arbitration() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.11}>
-              <p className="font-sans text-[0.9rem] text-[#7A8899] leading-[1.85] mb-4">
+              <p
+                className="font-sans text-[0.9rem] leading-[1.85] mb-4"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {t.arbitration.description1}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={0.15}>
-              <p className="font-sans text-[0.9rem] text-[#7A8899] leading-[1.85] mb-8">
+              <p
+                className="font-sans text-[0.9rem] leading-[1.85] mb-8"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {t.arbitration.description2}
               </p>
             </AnimatedSection>
@@ -160,8 +166,11 @@ export default function Arbitration() {
             <AnimatedSection delay={0.35} className="mt-5">
               <div className="glass-card px-5 py-3.5 flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#C41E3A] flex-shrink-0 animate-pulse" />
-                <p className="font-sans text-[0.72rem] text-[#4A5568] leading-snug">
-                  {t.about.stats[2]?.label} — OOO «Capital Legal Masters»
+                <p
+                  className="font-sans text-[0.72rem] leading-snug"
+                  style={{ color: "var(--text-dim)" }}
+                >
+                  {t.about.stats[2]?.label} — MCHJ «Capital Legal Masters»
                 </p>
               </div>
             </AnimatedSection>
