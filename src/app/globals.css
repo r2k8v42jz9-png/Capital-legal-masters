@@ -105,10 +105,10 @@
     padding: 0;
   }
 
-  /* html always has footer-dark bg so the area below the footer
-     never shows a mismatched swatch in either theme            */
+  /* html uses the theme page background so any overscroll area
+     (Safari rubber-band, short pages) matches the current theme  */
   html {
-    background-color: #06080D;
+    background-color: var(--bg-page);
     min-height: 100%;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;

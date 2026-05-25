@@ -21,6 +21,7 @@ export default function Footer() {
       : "Зарегистрировано в соответствии с законодательством Республики Узбекистан";
 
   const contactHeading = language === "uz" ? "Kontaktlar" : "Контакты";
+  const firmBadge = language === "uz" ? "MCHJ" : "ООО";
 
   // Derive href values from translation data
   const telHref = `tel:${t.contact.info.phone.value.replace(/[\s\-]/g, "")}`;
@@ -81,7 +82,7 @@ export default function Footer() {
             <div className="inline-flex items-center gap-2 border border-white/[0.055] px-3 py-2">
               <div className="red-dot" />
               <span className="font-sans text-[0.62rem] font-600 tracking-[0.1em] uppercase text-[#2A3340]">
-                MCHJ
+                {firmBadge}
               </span>
             </div>
           </AnimatedSection>

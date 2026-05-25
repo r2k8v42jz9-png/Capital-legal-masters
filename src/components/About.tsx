@@ -9,7 +9,7 @@ export default function About() {
   const firmLabel =
     language === "uz"
       ? "MCHJ «CAPITAL LEGAL MASTERS»"
-      : "MCHJ «Capital Legal Masters»";
+      : "ООО «CAPITAL LEGAL MASTERS»";
 
   return (
     <section

@@ -34,7 +34,7 @@ export default function Contact() {
   const firmLabel =
     language === "uz"
       ? "MCHJ «CAPITAL LEGAL MASTERS»"
-      : "MCHJ «Capital Legal Masters»";
+      : "ООО «CAPITAL LEGAL MASTERS»";
   const [form, setForm] = useState<FormState>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);

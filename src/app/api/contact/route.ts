@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     <div style="background:#f9f9f9;border-left:3px solid #C41E3A;padding:14px 16px;margin-top:4px;font-size:0.9rem;line-height:1.7;white-space:pre-wrap;">${message}</div>
 
     <p style="margin-top:24px;font-size:0.72rem;color:#999;border-top:1px solid #eee;padding-top:12px;">
-      MCHJ «Capital Legal Masters» — sayt orqali yuborilgan murojaat<br>
+      MCHJ «CAPITAL LEGAL MASTERS» — sayt orqali yuborilgan murojaat<br>
       Toshkent shahri, Yunusobod tumani | +998 90 015 07 81
     </p>
   </div>

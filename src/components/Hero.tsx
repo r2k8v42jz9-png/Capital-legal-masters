@@ -41,7 +41,7 @@ export default function Hero() {
   const firmLabel =
     language === "uz"
       ? "MCHJ «CAPITAL LEGAL MASTERS»"
-      : "MCHJ «Capital Legal Masters»";
+      : "ООО «CAPITAL LEGAL MASTERS»";
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 90]);

@@ -20,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Capital Legal Masters — Yuridik firma | O'zbekiston",
   description:
-    "MCHJ «Capital Legal Masters» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini yuridik ta'minlash, korporativ huquq va hakamlik sudida ixtisoslashgan professional yuridik firma. MCHJ «Capital Legal Masters» — юридическая фирма в Узбекистане.",
+    "MCHJ «CAPITAL LEGAL MASTERS» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini yuridik ta'minlash, korporativ huquq va hakamlik sudida ixtisoslashgan professional yuridik firma. ООО «CAPITAL LEGAL MASTERS» — юридическая фирма в Узбекистане.",
   keywords: [
     "yuridik firma Toshkent",
     "Capital Legal Masters",
@@ -58,7 +58,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "Capital Legal Masters",
-  "legalName": "MCHJ «Capital Legal Masters»",
+  "legalName": "MCHJ «CAPITAL LEGAL MASTERS»",
   "url": "https://capitallegal.uz",
   "telephone": "+998900150781",
   "email": "tomure1974@gmail.com",
@@ -93,7 +93,7 @@ const jsonLd = {
     "Legal Consulting",
     "Contract Law"
   ],
-  "description": "MCHJ «Capital Legal Masters» — professional yuridik firma. Kompaniyamiz huzurida O'zR «Hakamlik sudlari to'g'risida»gi Qonun asosida doimiy hakamlik sudi faoliyat yuritadi.",
+  "description": "MCHJ «CAPITAL LEGAL MASTERS» — professional yuridik firma. Kompaniyamiz huzurida O'zR «Hakamlik sudlari to'g'risida»gi Qonun asosida doimiy hakamlik sudi faoliyat yuritadi.",
   "knowsLanguage": ["uz", "ru"],
   "hasMap": "https://www.openstreetmap.org/?mlat=41.32729&mlon=69.28998"
 };
