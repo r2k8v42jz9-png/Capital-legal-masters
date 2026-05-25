@@ -8,6 +8,10 @@
    [data-theme="light"] = light overrides
    ══════════════════════════════════════════════════ */
 :root {
+  /* Tells the browser (esp. Safari/macOS) to paint UA surfaces —
+     scrollbars, rubber-band overscroll behind the footer — dark.   */
+  color-scheme: dark;
+
   /* Backgrounds */
   --bg-page:          #070A0F;
   --bg-section:       #070A0F;
@@ -51,6 +55,10 @@
 }
 
 [data-theme="light"] {
+  /* Light appearance for UA surfaces — eliminates the black
+     rubber-band/overscroll strip below the footer on Safari/macOS. */
+  color-scheme: light;
+
   /* Backgrounds */
   --bg-page:          #F5F2EC;
   --bg-section:       #F5F2EC;

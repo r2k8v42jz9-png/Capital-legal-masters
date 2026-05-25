@@ -104,7 +104,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="uz" className={`${playfair.variable} ${inter.variable}`}>
+    <html
+      lang="uz"
+      className={`${playfair.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Anti-FOUC theme script — runs synchronously before render */}
         <script dangerouslySetInnerHTML={{ __html: antiFlicker }} />
