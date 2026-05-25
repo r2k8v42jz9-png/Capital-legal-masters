@@ -52,6 +52,20 @@
   --nav-link:         #7A8B9E;   /* inactive nav links — visible on dark */
   --nav-link-active:  #E8ECF0;
   --nav-link-hover:   #B8C8D8;
+
+  /* Footer — dark theme (values match the original design exactly) */
+  --footer-bg:          #06080D;
+  --footer-text:        #3D4D5E;            /* description, links, values */
+  --footer-heading:     #2A3340;            /* headings, labels, badge, rights */
+  --footer-address:     #3A4858;
+  --footer-icon:        #2E3A4A;
+  --footer-faint:       #1E2838;            /* legal note */
+  --footer-tagline:     #1A2230;
+  --footer-link-hover:  #A8B8C8;
+  --footer-value-hover: #8B9AAA;
+  --footer-line:        rgba(255, 255, 255, 0.035);
+  --footer-divider:     rgba(255, 255, 255, 0.045);
+  --footer-border:      rgba(255, 255, 255, 0.06);
 }
 
 [data-theme="light"] {
@@ -99,6 +113,20 @@
   --nav-link:         #3D4D5C;   /* inactive nav links — deep on ivory */
   --nav-link-active:  #0F1923;
   --nav-link-hover:   #1A2838;
+
+  /* Footer — light premium corporate (warm ivory, deep graphite text) */
+  --footer-bg:          #E8E1D6;            /* warm ivory-gray, blends with sections */
+  --footer-text:        #44535F;            /* readable graphite */
+  --footer-heading:     #28323D;            /* darker graphite for headings/labels */
+  --footer-address:     #44535F;
+  --footer-icon:        #5E6B78;
+  --footer-faint:       #69747F;            /* legal note — subtle but readable */
+  --footer-tagline:     #8A949E;            /* tagline — soft but visible */
+  --footer-link-hover:  #C41E3A;
+  --footer-value-hover: #C41E3A;
+  --footer-line:        rgba(0, 0, 0, 0.07);
+  --footer-divider:     rgba(0, 0, 0, 0.08);
+  --footer-border:      rgba(0, 0, 0, 0.10);
 }
 
 /* ══════════════════════════════════════════════════
@@ -216,6 +244,55 @@
 
 .glass-card:hover .card-desc {
   color: var(--text-body);
+}
+
+/* ══════════════════════════════════════════════════
+   FOOTER — theme-aware text, borders & dividers
+   (dark theme resolves to the original design values)
+   ══════════════════════════════════════════════════ */
+.footer-text     { color: var(--footer-text); transition: color 0.25s ease; }
+.footer-heading  { color: var(--footer-heading); transition: color 0.3s ease; }
+.footer-address  { color: var(--footer-address); transition: color 0.3s ease; }
+.footer-faint    { color: var(--footer-faint); transition: color 0.3s ease; }
+.footer-tagline  { color: var(--footer-tagline); transition: color 0.3s ease; }
+.footer-icon     { color: var(--footer-icon); transition: color 0.3s ease; }
+
+/* Nav links — hover via the button's own state */
+.footer-link {
+  color: var(--footer-text);
+  transition: color 0.25s ease;
+}
+.footer-link:hover {
+  color: var(--footer-link-hover);
+}
+
+/* Contact values + icons — hover driven by parent .group */
+.footer-value {
+  color: var(--footer-text);
+  transition: color 0.3s ease;
+}
+.group:hover .footer-value {
+  color: var(--footer-value-hover);
+}
+.group:hover .footer-icon {
+  color: #C41E3A;
+}
+
+/* Icon boxes — base border + crimson on parent hover */
+.footer-icon-box {
+  border: 1px solid var(--footer-border);
+  transition: border-color 0.3s ease;
+}
+.group:hover .footer-icon-box {
+  border-color: rgba(196, 30, 58, 0.28);
+}
+
+/* Decorative gradient lines */
+.footer-line {
+  background: linear-gradient(90deg, transparent, var(--footer-line), transparent);
+}
+.footer-divider {
+  background: linear-gradient(90deg, transparent, var(--footer-divider), transparent);
 }
 
 /* ══════════════════════════════════════════════════

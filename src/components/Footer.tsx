@@ -28,11 +28,11 @@ export default function Footer() {
   const mailHref = `mailto:${t.contact.info.email.value}`;
 
   return (
-    <footer className="relative overflow-hidden" style={{ background: "var(--bg-footer)" }}>
+    <footer className="relative overflow-hidden" style={{ background: "var(--footer-bg)" }}>
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0">
         <div className="h-px bg-gradient-to-r from-transparent via-[#C41E3A]/28 to-transparent" />
-        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.035] to-transparent mt-[2px]" />
+        <div className="h-px footer-line mt-[2px]" />
       </div>
 
       {/* Subtle glow */}
@@ -69,19 +69,22 @@ export default function Footer() {
                 <div className="font-sans text-[0.6rem] font-700 tracking-[0.22em] uppercase text-[#C41E3A]">
                   Capital Legal
                 </div>
-                <div className="font-sans text-[0.55rem] font-500 tracking-[0.18em] uppercase text-[#2A3340] mt-0.5">
+                <div className="footer-heading font-sans text-[0.55rem] font-500 tracking-[0.18em] uppercase mt-0.5">
                   Masters
                 </div>
               </div>
             </button>
 
-            <p className="font-sans text-[0.79rem] text-[#3D4D5E] leading-[1.82] max-w-[300px] mb-5">
+            <p className="footer-text font-sans text-[0.79rem] leading-[1.82] max-w-[300px] mb-5">
               {t.footer.description}
             </p>
 
-            <div className="inline-flex items-center gap-2 border border-white/[0.055] px-3 py-2">
+            <div
+              className="inline-flex items-center gap-2 px-3 py-2"
+              style={{ border: "1px solid var(--footer-border)" }}
+            >
               <div className="red-dot" />
-              <span className="font-sans text-[0.62rem] font-600 tracking-[0.1em] uppercase text-[#2A3340]">
+              <span className="footer-heading font-sans text-[0.62rem] font-600 tracking-[0.1em] uppercase">
                 {firmBadge}
               </span>
             </div>
@@ -90,7 +93,7 @@ export default function Footer() {
           {/* Nav sections */}
           {t.footer.sections.map((section, si) => (
             <AnimatedSection key={si} delay={0.07 * (si + 1)}>
-              <div className="font-sans text-[0.64rem] font-700 tracking-[0.22em] uppercase text-[#2A3340] mb-5">
+              <div className="footer-heading font-sans text-[0.64rem] font-700 tracking-[0.22em] uppercase mb-5">
                 {section.heading}
               </div>
               <ul className="space-y-3">
@@ -98,7 +101,7 @@ export default function Footer() {
                   <li key={li}>
                     <button
                       onClick={() => scrollTo(link.id)}
-                      className="font-sans text-[0.79rem] text-[#3D4D5E] hover:text-[#A8B8C8] transition-colors duration-250 flex items-center gap-2 group"
+                      className="footer-link font-sans text-[0.79rem] flex items-center gap-2 group"
                     >
                       <span className="w-0 h-px bg-[#C41E3A]/45 group-hover:w-3.5 transition-all duration-300 flex-shrink-0" />
                       {link.label}
@@ -111,7 +114,7 @@ export default function Footer() {
 
           {/* ── Contact details column ── */}
           <AnimatedSection delay={0.22}>
-            <div className="font-sans text-[0.64rem] font-700 tracking-[0.22em] uppercase text-[#2A3340] mb-5">
+            <div className="footer-heading font-sans text-[0.64rem] font-700 tracking-[0.22em] uppercase mb-5">
               {contactHeading}
             </div>
 
@@ -126,17 +129,14 @@ export default function Footer() {
                   transition={{ duration: 0.2 }}
                   aria-label={t.contact.info.phone.value}
                 >
-                  <div className="w-7 h-7 flex items-center justify-center border border-white/[0.06] group-hover:border-[#C41E3A]/28 transition-colors duration-300 flex-shrink-0 mt-0.5">
-                    <Phone
-                      size={11}
-                      className="text-[#2E3A4A] group-hover:text-[#C41E3A] transition-colors duration-300"
-                    />
+                  <div className="footer-icon-box w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Phone size={11} className="footer-icon" />
                   </div>
                   <div>
-                    <div className="font-sans text-[0.6rem] tracking-[0.12em] uppercase text-[#2A3340] mb-0.5">
+                    <div className="footer-heading font-sans text-[0.6rem] tracking-[0.12em] uppercase mb-0.5">
                       {t.contact.info.phone.label}
                     </div>
-                    <div className="font-sans text-[0.78rem] text-[#3D4D5E] group-hover:text-[#8B9AAA] transition-colors duration-300">
+                    <div className="footer-value font-sans text-[0.78rem]">
                       {t.contact.info.phone.value}
                     </div>
                   </div>
@@ -152,17 +152,14 @@ export default function Footer() {
                   transition={{ duration: 0.2 }}
                   aria-label={t.contact.info.email.value}
                 >
-                  <div className="w-7 h-7 flex items-center justify-center border border-white/[0.06] group-hover:border-[#C41E3A]/28 transition-colors duration-300 flex-shrink-0 mt-0.5">
-                    <Mail
-                      size={11}
-                      className="text-[#2E3A4A] group-hover:text-[#C41E3A] transition-colors duration-300"
-                    />
+                  <div className="footer-icon-box w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Mail size={11} className="footer-icon" />
                   </div>
                   <div>
-                    <div className="font-sans text-[0.6rem] tracking-[0.12em] uppercase text-[#2A3340] mb-0.5">
+                    <div className="footer-heading font-sans text-[0.6rem] tracking-[0.12em] uppercase mb-0.5">
                       {t.contact.info.email.label}
                     </div>
-                    <div className="font-sans text-[0.74rem] text-[#3D4D5E] group-hover:text-[#8B9AAA] transition-colors duration-300 break-all">
+                    <div className="footer-value font-sans text-[0.74rem] break-all">
                       {t.contact.info.email.value}
                     </div>
                   </div>
@@ -172,16 +169,14 @@ export default function Footer() {
               {/* Address — not clickable */}
               <li>
                 <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 flex items-center justify-center border border-white/[0.06] flex-shrink-0 mt-0.5">
-                    <MapPin size={11} className="text-[#2E3A4A]" />
+                  <div className="footer-icon-box w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <MapPin size={11} className="footer-icon" />
                   </div>
                   <div>
-                    <div className="font-sans text-[0.6rem] tracking-[0.12em] uppercase text-[#2A3340] mb-0.5">
+                    <div className="footer-heading font-sans text-[0.6rem] tracking-[0.12em] uppercase mb-0.5">
                       {t.contact.info.address.label}
                     </div>
-                    <div
-                      className="font-sans text-[0.74rem] text-[#3A4858] leading-[1.7] whitespace-pre-line"
-                    >
+                    <div className="footer-address font-sans text-[0.74rem] leading-[1.7] whitespace-pre-line">
                       {t.contact.info.address.value}
                     </div>
                   </div>
@@ -192,18 +187,18 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/[0.045] to-transparent" />
+        <div className="h-px footer-divider" />
 
         {/* Bottom bar */}
         <div className="py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <AnimatedSection>
-            <p className="font-sans text-[0.7rem] text-[#2A3340] text-center sm:text-left">
+            <p className="footer-heading font-sans text-[0.7rem] text-center sm:text-left">
               {t.footer.rights}
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.05}>
-            <p className="font-sans text-[0.66rem] text-[#1E2838] text-center sm:text-right">
+            <p className="footer-faint font-sans text-[0.66rem] text-center sm:text-right">
               {legalNote}
             </p>
           </AnimatedSection>
@@ -212,7 +207,7 @@ export default function Footer() {
         {/* Tagline strip */}
         <div className="pb-4 text-center">
           <AnimatedSection>
-            <p className="font-sans text-[0.62rem] tracking-[0.18em] uppercase text-[#1A2230] italic">
+            <p className="footer-tagline font-sans text-[0.62rem] tracking-[0.18em] uppercase italic">
               {t.footer.tagline}
             </p>
           </AnimatedSection>
