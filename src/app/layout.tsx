@@ -17,7 +17,11 @@ const inter = Inter({
   display: "swap",
 });
 
+// Canonical production domain — single source of truth for all URLs
+const SITE_URL = "https://legalmasters.uz";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Capital Legal Masters — Yuridik firma | O'zbekiston",
   description:
     "MCHJ «CAPITAL LEGAL MASTERS» — O'zbekiston Respublikasi qonunchiligi asosida tadbirkorlik faoliyatini yuridik ta'minlash, korporativ huquq va hakamlik sudida ixtisoslashgan professional yuridik firma. ООО «CAPITAL LEGAL MASTERS» — юридическая фирма в Узбекистане.",
@@ -31,12 +35,23 @@ export const metadata: Metadata = {
     "третейский суд Узбекистан",
     "корпоративное право",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Capital Legal Masters",
     description:
       "O'zbekiston Respublikasida professional yuridik xizmatlar. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
+    url: SITE_URL,
+    siteName: "Capital Legal Masters",
     type: "website",
     locale: "uz_UZ",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Capital Legal Masters",
+    description:
+      "O'zbekiston Respublikasida professional yuridik xizmatlar. Kompaniyamiz huzurida doimiy hakamlik sudi faoliyat yuritadi.",
   },
 };
 
@@ -53,49 +68,62 @@ const antiFlicker = `
 })();
 `.trim();
 
-// Schema.org JSON-LD structured data
+// Schema.org JSON-LD structured data (organization + website)
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "Capital Legal Masters",
-  "legalName": "MCHJ «CAPITAL LEGAL MASTERS»",
-  "url": "https://capitallegal.uz",
-  "telephone": "+998900150781",
-  "email": "tomure1974@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bodomzor yo'li ko'chasi, 1a",
-    "addressLocality": "Toshkent",
-    "addressRegion": "Toshkent shahri",
-    "addressCountry": "UZ"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.32729140614236,
-    "longitude": 69.28997506006668
-  },
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
+      "@type": "LegalService",
+      "@id": `${SITE_URL}/#organization`,
+      "name": "Capital Legal Masters",
+      "legalName": "MCHJ «CAPITAL LEGAL MASTERS»",
+      "url": SITE_URL,
+      "telephone": "+998900150781",
+      "email": "tomure1974@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bodomzor yo'li ko'chasi, 1a",
+        "addressLocality": "Toshkent",
+        "addressRegion": "Toshkent shahri",
+        "addressCountry": "UZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.32729140614236,
+        "longitude": 69.28997506006668
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": {
+        "@type": "Country",
+        "name": "Uzbekistan"
+      },
+      "serviceType": [
+        "Corporate Law",
+        "Business Registration",
+        "Arbitration",
+        "Legal Consulting",
+        "Contract Law"
+      ],
+      "description": "MCHJ «CAPITAL LEGAL MASTERS» — professional yuridik firma. Kompaniyamiz huzurida O'zR «Hakamlik sudlari to'g'risida»gi Qonun asosida doimiy hakamlik sudi faoliyat yuritadi.",
+      "knowsLanguage": ["uz", "ru"],
+      "hasMap": "https://www.openstreetmap.org/?mlat=41.32729&mlon=69.28998"
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      "url": SITE_URL,
+      "name": "Capital Legal Masters",
+      "inLanguage": ["uz", "ru"],
+      "publisher": { "@id": `${SITE_URL}/#organization` }
     }
-  ],
-  "areaServed": {
-    "@type": "Country",
-    "name": "Uzbekistan"
-  },
-  "serviceType": [
-    "Corporate Law",
-    "Business Registration",
-    "Arbitration",
-    "Legal Consulting",
-    "Contract Law"
-  ],
-  "description": "MCHJ «CAPITAL LEGAL MASTERS» — professional yuridik firma. Kompaniyamiz huzurida O'zR «Hakamlik sudlari to'g'risida»gi Qonun asosida doimiy hakamlik sudi faoliyat yuritadi.",
-  "knowsLanguage": ["uz", "ru"],
-  "hasMap": "https://www.openstreetmap.org/?mlat=41.32729&mlon=69.28998"
+  ]
 };
 
 export default function RootLayout({
