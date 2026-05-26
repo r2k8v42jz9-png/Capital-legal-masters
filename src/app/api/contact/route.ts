@@ -4,18 +4,34 @@ import nodemailer from "nodemailer";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, subject, message } = body as {
+    const { name, email, phone, service, message, _hp } = body as {
       name?: string;
       email?: string;
       phone?: string;
-      subject?: string;
+      service?: string;
       message?: string;
+      _hp?: string;
     };
 
-    // Basic validation
+    // Spam protection — honeypot. Bots fill the hidden field; humans don't.
+    // Pretend success so the bot gets no useful signal.
+    if (_hp) {
+      return NextResponse.json({ ok: true });
+    }
+
+    // Required fields
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Ism, email va xabar maydonlarini to'ldiring." },
+        { status: 400 }
+      );
+    }
+
+    // Email format validation
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
+      return NextResponse.json(
+        { error: "Elektron pochta manzili noto'g'ri." },
         { status: 400 }
       );
     }
@@ -32,9 +48,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create transporter
+    // Create transporter — explicit Gmail SMTP over TLS
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
         user: gmailUser,
         pass: gmailPass,
@@ -78,11 +96,11 @@ export async function POST(req: NextRequest) {
           : ""
       }
       ${
-        subject
+        service
           ? `
       <tr style="border-top:1px solid #f0f0f0;">
-        <td style="padding:8px 0;color:#666;font-size:0.82rem;vertical-align:top;">Mavzu / Тема</td>
-        <td style="padding:8px 0;font-size:0.9rem;">${subject}</td>
+        <td style="padding:8px 0;color:#666;font-size:0.82rem;vertical-align:top;">Yuridik xizmat / Услуга</td>
+        <td style="padding:8px 0;font-size:0.9rem;">${service}</td>
       </tr>`
           : ""
       }
@@ -106,11 +124,11 @@ export async function POST(req: NextRequest) {
       from: `"CLM Website" <${gmailUser}>`,
       to: "capitallegalmasters@gmail.com",
       replyTo: email,
-      subject: subject
-        ? `CLM murojaat: ${subject} — ${name}`
+      subject: service
+        ? `CLM murojaat: ${service} — ${name}`
         : `CLM murojaat: ${name}`,
       html,
-      text: `Ism: ${name}\nEmail: ${email}\nTelefon: ${phone || "—"}\nMavzu: ${subject || "—"}\n\nXabar:\n${message}`,
+      text: `Ism: ${name}\nEmail: ${email}\nTelefon: ${phone || "—"}\nXizmat: ${service || "—"}\n\nXabar:\n${message}`,
     });
 
     return NextResponse.json({ ok: true });

@@ -520,6 +520,20 @@ textarea.form-input {
   min-height: 120px;
 }
 
+/* Select (legal-service dropdown) — custom chevron, matches inputs.
+   Native option list inherits the theme via the root `color-scheme`. */
+.form-select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%238A94A0' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 L6 8 L9.5 4.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 12px;
+}
+
 /* Honeypot — hidden from humans, visible to bots */
 .hp-field {
   position: absolute;

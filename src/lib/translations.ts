@@ -54,7 +54,9 @@ export type Translations = {
       name: string;
       email: string;
       phone: string;
-      subject: string;
+      service: string;
+      servicePlaceholder: string;
+      serviceOther: string;
       message: string;
       submit: string;
       success: string;
@@ -247,7 +249,9 @@ const uz: Translations = {
       name: "Ismingiz",
       email: "Elektron pochta",
       phone: "Telefon raqami",
-      subject: "Murojaat mavzusi",
+      service: "Yuridik xizmat",
+      servicePlaceholder: "Xizmat yo'nalishini tanlang",
+      serviceOther: "Boshqa / umumiy savol",
       message: "Xabar",
       submit: "Yuborish",
       success: "Murojaatingiz qabul qilindi",
@@ -464,7 +468,9 @@ const ru: Translations = {
       name: "Ваше имя",
       email: "Электронная почта",
       phone: "Номер телефона",
-      subject: "Тема обращения",
+      service: "Юридическая услуга",
+      servicePlaceholder: "Выберите направление услуги",
+      serviceOther: "Другое / общий вопрос",
       message: "Сообщение",
       submit: "Отправить",
       success: "Ваше обращение принято",

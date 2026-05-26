@@ -15,7 +15,7 @@ type FormState = {
   name: string;
   email: string;
   phone: string;
-  subject: string;
+  service: string;
   message: string;
   _hp: string; // honeypot
 };
@@ -28,7 +28,7 @@ type InfoItem = {
   multiline?: boolean;
 };
 
-const EMPTY: FormState = { name: "", email: "", phone: "", subject: "", message: "", _hp: "" };
+const EMPTY: FormState = { name: "", email: "", phone: "", service: "", message: "", _hp: "" };
 
 export default function Contact() {
   const { t, language } = useLanguage();
@@ -43,7 +43,7 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const set = (k: keyof FormState) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setForm((p) => ({ ...p, [k]: e.target.value }));
 
   const handleSubmit = async (e: FormEvent) => {
@@ -62,8 +62,9 @@ export default function Contact() {
           name: form.name,
           email: form.email,
           phone: form.phone,
-          subject: form.subject,
+          service: form.service,
           message: form.message,
+          _hp: form._hp,
         }),
       });
 
@@ -275,14 +276,24 @@ export default function Contact() {
                         />
                       </div>
                       <div>
-                        <label className="form-label">{t.contact.form.subject}</label>
-                        <input
-                          type="text"
-                          className="form-input"
-                          placeholder="—"
-                          value={form.subject}
-                          onChange={set("subject")}
-                        />
+                        <label className="form-label">{t.contact.form.service}</label>
+                        <select
+                          className="form-input form-select"
+                          value={form.service}
+                          onChange={set("service")}
+                        >
+                          <option value="" disabled>
+                            {t.contact.form.servicePlaceholder}
+                          </option>
+                          {t.services.items.map((s, i) => (
+                            <option key={i} value={s.title}>
+                              {s.title}
+                            </option>
+                          ))}
+                          <option value={t.contact.form.serviceOther}>
+                            {t.contact.form.serviceOther}
+                          </option>
+                        </select>
                       </div>
                     </div>
 
