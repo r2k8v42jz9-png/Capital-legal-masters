@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"CLM Website" <${gmailUser}>`,
-      to: "tomure1974@gmail.com",
+      to: "capitallegalmasters@gmail.com",
       replyTo: email,
       subject: subject
         ? `CLM murojaat: ${subject} — ${name}`

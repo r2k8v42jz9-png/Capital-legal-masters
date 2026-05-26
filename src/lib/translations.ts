@@ -256,7 +256,7 @@ const uz: Translations = {
     },
     info: {
       phone: { label: "Telefon", value: "+998 90 015 07 81" },
-      email: { label: "Elektron pochta", value: "tomure1974@gmail.com" },
+      email: { label: "Elektron pochta", value: "capitallegalmasters@gmail.com" },
       address: {
         label: "Manzil",
         value:
@@ -473,7 +473,7 @@ const ru: Translations = {
     },
     info: {
       phone: { label: "Телефон", value: "+998 90 015 07 81" },
-      email: { label: "Электронная почта", value: "tomure1974@gmail.com" },
+      email: { label: "Электронная почта", value: "capitallegalmasters@gmail.com" },
       address: {
         label: "Адрес",
         value:

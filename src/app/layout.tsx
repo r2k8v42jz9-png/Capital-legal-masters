@@ -79,7 +79,7 @@ const jsonLd = {
       "legalName": "MCHJ «CAPITAL LEGAL MASTERS»",
       "url": SITE_URL,
       "telephone": "+998900150781",
-      "email": "tomure1974@gmail.com",
+      "email": "capitallegalmasters@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Bodomzor yo'li ko'chasi, 1a",
