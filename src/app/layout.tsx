@@ -78,6 +78,8 @@ const jsonLd = {
       "name": "Capital Legal Masters",
       "legalName": "MCHJ «CAPITAL LEGAL MASTERS»",
       "url": SITE_URL,
+      "logo": `${SITE_URL}/apple-icon`,
+      "image": `${SITE_URL}/opengraph-image`,
       "telephone": "+998900150781",
       "email": "capitallegalmasters@gmail.com",
       "address": {
